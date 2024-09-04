@@ -104,6 +104,6 @@ function addStudent(name, email) {
   container.appendChild(student);
 }
 
-// const newName = prompt("enter name:");
-// const newEmail = prompt("enter email:");
-// addStudent(newName, newEmail);
+const newName = prompt("enter name:");
+const newEmail = prompt("enter email:");
+addStudent(newName, newEmail);
