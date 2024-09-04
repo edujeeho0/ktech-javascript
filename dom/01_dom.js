@@ -53,4 +53,57 @@ h1.innerHTML = `
 // XSS 공격
 
 
+// 새로운 HTML 요소 생성하기
+// createElement("tagName") => <tagName></tagName>
+const newStudent = document.createElement("div");
+newStudent.innerText = "New div!!!";
+newStudent.className = "container-item";
 
+// 만든 HTML 요소를 다른 요소의 자식으로 추가하기
+container.appendChild(newStudent);
+// 이미 존재하는 요소를 다른 요소의 자식으로 추가하면
+// 해당 요소가 다른곳으로 이동한다.
+document.querySelector("body").appendChild(newStudent);
+container.appendChild(newStudent);
+
+
+// Chad 추가하기
+// 1. 정보를 담을 div를 먼저 만든다.
+const chad = document.createElement("div");
+chad.className = "container-item";
+
+// 2. 이름을 담을 h3를 만든다.
+const chadH3 = document.createElement("h3");
+chadH3.innerText = "Chad";
+
+// 3. 이메일을 담을 p를 만든다.
+const chadP = document.createElement("p");
+chadP.innerText = "chad@gmail.com";
+
+// 4. div에 h3와 p를 추가한다.
+chad.appendChild(chadH3);
+chad.appendChild(chadP);
+
+// 5. container에 chad를 추가한다.
+container.appendChild(chad);
+
+
+// 학생을 추가하는 함수
+function addStudent(name, email) {
+  const student = document.createElement("div");
+  student.className = "container-item";
+  
+  const nameH3 = document.createElement("h3");
+  nameH3.innerText = name;
+  
+  const emailP = document.createElement("p");
+  emailP.innerText = email;
+  
+  student.appendChild(nameH3);
+  student.appendChild(emailP);
+  container.appendChild(student);
+}
+
+// const newName = prompt("enter name:");
+// const newEmail = prompt("enter email:");
+// addStudent(newName, newEmail);
