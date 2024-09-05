@@ -7,11 +7,10 @@ if (!jwt) {
 }
 
 // article 데이터를 HTML로 변환하는 함수
-function addArticle(title, content, writer) {
+function addArticle(id, title, content, writer) {
   const articleDiv = document.createElement("div");
   articleDiv.innerHTML = `
-    <h3>${title}</h3>
-    <p>${content}</p>
+    <h3><a href="/views/articles/${id}">${title}</a></h3>
     <p>${writer}</p>
     <hr>
   `;
@@ -38,7 +37,7 @@ fetch("/articles", {
   })
   .then(json => {
     json.reverse();
-    json.forEach((article) => addArticle(article.title, article.content, article.writer));
+    json.forEach((article) => addArticle(article.id, article.title, article.content, article.writer));
   })
   .catch(e => {
     console.error(e);

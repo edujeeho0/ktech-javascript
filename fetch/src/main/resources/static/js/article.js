@@ -30,6 +30,9 @@ fetch(`/articles/${articleId}`, {
   })
   .then(json => {
     console.log(json);
+    document.getElementById("article-title").innerText = json.title;
+    document.getElementById("article-content").innerText = json.content;
+    document.getElementById("article-writer").innerText = json.writer;
   })
   .catch(e => {
     console.error(e);
