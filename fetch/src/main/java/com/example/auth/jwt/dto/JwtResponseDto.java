@@ -6,3 +6,9 @@ import lombok.Data;
 public class JwtResponseDto {
     private String token;
 }
+/*
+{
+    "token": "aboendinaib.fbsgeavoidnoei.dsignweiognowniogwniro"
+}
+ */
+
