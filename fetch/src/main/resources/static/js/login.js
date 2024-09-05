@@ -34,7 +34,7 @@ loginForm.addEventListener("submit", (e) => {
       return response.json();
     }
     // 3-2. 만약 실패했다면, 예외를 던진다.
-    else throw Error(response.statusText);
+    else throw Error(response.status);
   })
   // 4. 응답에 담긴 JWT를 저장한다.
   .then(json => {

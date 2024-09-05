@@ -33,7 +33,7 @@ public class WebSecurityConfig {
                     auth.requestMatchers("/error", "/token/issue", "/views/**", "/static/**")
                             .permitAll();
                     auth.requestMatchers("/articles/**")
-                            .permitAll();
+                            .authenticated();
                     auth.anyRequest()
                             .authenticated();
                 })
