@@ -1,5 +1,7 @@
-// 현재 JWT가 저장되어 있는지 확인해보기
-console.log(localStorage.getItem("jwt"));
+// 로그인이 되어 있다면 다른 페이지(홈페이지 등)로 이동한다.
+if (localStorage.getItem("jwt")) {
+  location.href = "/views/articles";
+}
 
 // form 요소에 사용자가 아이디 비밀번호를 입력하고 제출
 // 해당 데이터를 모아서 JSON으로 변환
@@ -41,6 +43,8 @@ loginForm.addEventListener("submit", (e) => {
     console.log(json);
     console.log(json.token);
     localStorage.setItem("jwt", json.token);
+    // 다음 페이지로 이동한다.
+    location.href = "/views/articles";
   })
   // 실패했을 경우 이유를 alert로 표시한다.
   .catch(e => alert(e.message));
