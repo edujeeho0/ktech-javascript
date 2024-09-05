@@ -1,0 +1,35 @@
+// article 데이터를 HTML로 변환하는 함수
+function addArticle(title, content, writer) {
+  const articleDiv = document.createElement("div");
+  articleDiv.innerHTML = `
+    <h3>${title}</h3>
+    <p>${content}</p>
+    <p>${writer}</p>
+  `;
+  document.getElementById("container").appendChild(articleDiv);
+}
+
+// fetch는 Promise를 돌려준다.
+fetch("/articles")
+  // then: 비동기 실행이 끝난 다음에
+  // callback을 실행한다.
+  .then(response => {
+    // response는 돌아온 HTTP 응답을 나타낸다.
+    console.log(response.status);
+    // response를 어떻게 처리할지를 결정할 수 있다.
+    if (response.ok) {
+      return response.json();
+    }
+    else throw Error("failed to fetch");
+  })
+  // 요청이 성공했으면 `response.json()`이
+  // 다시 Promise로 반환된다.
+  .then(json => {
+    json.forEach((article) => addArticle(article.title, article.content, article.writer));
+  })
+  // Promise 처리중 예외가 발생하면 처리하는 방법을
+  // catch로 전달한다.
+  .catch(e => {
+    console.error(e);
+  });
+console.log("fetch request sent!!!");
