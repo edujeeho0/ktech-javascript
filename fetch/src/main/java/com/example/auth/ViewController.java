@@ -26,6 +26,11 @@ public class ViewController {
         return "home";
     }
 
+    @GetMapping("articles/{id}")
+    public String article() {
+        return "read";
+    }
+
 
     // 3. POST /articles 에다가 요청을 보낼 때 JWT를 포함해서 보낸다.
     // 인증이 된 사용자로 인식할 수 있도록 한다.
